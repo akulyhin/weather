@@ -1,7 +1,28 @@
+import refs from './refs'
+import debounce from 'lodash.debounce';
+
+
+
+  let city = localStorage.getItem("city");
+
+
 export default {
-    query: 'Kiev',
-    // apiKey: 'ff8084d11c7279450a985d59a31a6700',
-    apiKey: '090fc987cd5621140b25360d9b4c89d1',
+
+    query: `${city}`,
+    apiKey: 'ff8084d11c7279450a985d59a31a6700',
+
+    
+    // geoLocation() {
+    //   const onGetPosition = location => {
+    //     console.log(location)
+    //     let latitude = location.coords.latitude;
+    //     let longitude = location.coords.longitude;
+    //     console.log(latitude);
+        
+    //     return latitude;
+    //   }
+    //   navigator.geolocation.getCurrentPosition(onGetPosition)
+    // },
 
 
     async fetchWeather() {
