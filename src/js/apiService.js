@@ -13,17 +13,30 @@ export default {
     
     geoLocation() {
       const onGetPosition = location => {
-        console.log(location)
+        // console.log(location)
         let latitude = location.coords.latitude;
         let longitude = location.coords.longitude;
-        // console.log(latitude);
+
+        localStorage.setItem('latitude', latitude);
+        localStorage.setItem('longitude', longitude);
       }
-      navigator.geolocation.getCurrentPosition(onGetPosition)
+      navigator.geolocation.getCurrentPosition(onGetPosition);
     },
 
 
+    async fetchWeatherByCity () {
+      let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.query}&units=metric&lang=ru&appid=${this.apiKey}`;
+      const response = await fetch(url);
+        
+      return response.json();
+    },
+
     async fetchWeather() {
-        let url = `https://api.openweathermap.org/data/2.5/weather?q=${this.query}&units=metric&lang=ru&appid=${this.apiKey}`;
+     let latitude = localStorage.getItem('latitude');
+      let longitude = localStorage.getItem('longitude');
+
+          const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&lang=ru&appid=${this.apiKey}`;
+
         const response = await fetch(url);
         
         return response.json();
