@@ -1,0 +1,50 @@
+{{#each this}}
+<h2 class="weather-city">{{name}}</h2>
+
+<div class="weather_item">
+<p><span class="current-temp"><span class="js_temp">{{main.temp}}</span>°</span></p>
+{{#each weather}}
+<p><img src="https://openweathermap.org/img/w/{{icon}}.png" width="65" height="auto"></p>
+<p class="description">{{this.description}}</p>
+{{/each}}
+</div>
+
+<div class="info_additional">
+
+    <div class="info_item">
+        <div class="ii info_label">
+            По ощущению: 
+        </div>
+        <div class="ii info_value">
+            <span class="js_temp">{{main.feels_like}}</span> C°
+        </div>
+    </div>
+
+    <div class="info_item">
+        <div class="ii info_label">
+            Мин. температура: 
+        </div>
+        <div class="ii info_value">
+            <span class="js_temp">{{main.temp_min}}</span> C°
+        </div>
+    </div>
+
+    <div class="info_item">
+        <div class="ii info_label">
+            Макс. температура: 
+        </div>
+        <div class="ii info_value">
+            <span class="js_temp">{{main.temp_max}}</span> C°
+        </div>
+    </div>
+
+        <div class="info_item">
+        <div class="ii info_label">
+            Ветер: 
+        </div>
+        <div class="ii info_value">
+            {{wind.speed}} м/с
+        </div>
+    </div>
+</div>
+{{/each}}
