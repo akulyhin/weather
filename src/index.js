@@ -4,12 +4,10 @@ import refs from './js/refs';
 import debounce from 'lodash.debounce';
 import templateCurrentWeather from './templates/templateCurrentWeather.hbs';
 
-
 refs.locationBtn.addEventListener('click', () => {
+    localStorage.removeItem("city");
     apiService.geoLocation();
-    location.href = location.href;
 })
-
 
 refs.searchBtn.addEventListener('click', () => {
     localStorage.removeItem("city");
@@ -34,6 +32,9 @@ refs.searchBtn.addEventListener('click', () => {
     else {
         console.log('Нет города')
     }
+
+
+    
 
 
 function render (data) {

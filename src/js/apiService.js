@@ -19,7 +19,11 @@ export default {
 
         localStorage.setItem('latitude', latitude);
         localStorage.setItem('longitude', longitude);
-      }
+        reload();
+      };
+      function reload () {
+        location.href = location.href;
+      } 
       navigator.geolocation.getCurrentPosition(onGetPosition);
     },
 
